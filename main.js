@@ -1,20 +1,23 @@
-var items = [
-    "Go to the market", 
-    "Clean the room", 
-    "Clean the laptop", 
-    "Buy books",
-];
+// Activity list
+var items = [];
 
+// List to check for duplicate activity
 set = new Set();
 
+// This function creates "li" element using the activities then adds them on "ul" element
 function attachItems(items) {
-    var ul = document.querySelector(".item-list");
-    for(var i = 0; i < items.length; i++) {
-        var li = makeListItem(items[i]);
-        ul.appendChild(li);
+    if(items.length === 0){
+        document.querySelector(".item-list").innerHTML = "No activity to accomplish!";
+    }else {
+        var ul = document.querySelector(".item-list");
+        for(var i = 0; i < items.length; i++) {
+            var li = makeListItem(items[i]);
+            ul.appendChild(li);
+        }
     }
 }
 
+// Helper function that creates "li" element
 function makeListItem(text) {
 
 		var div = document.createElement("div");
@@ -49,12 +52,16 @@ function makeListItem(text) {
     return li;
 }
 
+// whaenever user adds/removes an activites from to-do list this 
+// function clears the "ul" element first before updating the list 
 function clearUL() {
     var ul = document.querySelector(".item-list");
     ul.innerHTML = ""
     document.querySelector("#new-item").value = "";
 }
 
+// Whenever the user presses 'Enter' key or 'Add activity' button this function
+// gets called and works accordingly
 function handleClickEvent() {
     var inpEl = document.querySelector("#new-item");
     var val = inpEl.value;
@@ -73,6 +80,7 @@ function handleClickEvent() {
     }
 }
 
+//Function deletes an activity from the activity list
 function deleteItem(anchor) {
     var item = anchor.parentNode.parentNode.firstChild.textContent;
     var index = items.indexOf(item);
@@ -83,15 +91,19 @@ function deleteItem(anchor) {
     }
 }
 
+// It updates the status of accomplished activity 
 function checkActivity(i){
 	let done = i.parentNode.parentNode.parentNode;
 	done.classList.add("active");
 }
 
+// Handles events
 document.querySelector("#add-item").addEventListener("click", handleClickEvent);
 
+//this function adds activities(if there is any) initially to the activity list
 attachItems(items);
 
+// This function enables 'Enter' key to work same as "add activty" button when pressesd
 document.addEventListener('keypress', (event) => {
     const keyName = event.key;
   
