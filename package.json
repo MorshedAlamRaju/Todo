@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "A simple todo list app built using HTML, CSS and JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MorshedAlamRaju/Todo.git"
+  },
+  "author": "Raju",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MorshedAlamRaju/Todo/issues"
+  },
+  "homepage": "https://github.com/MorshedAlamRaju/Todo#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1"
+  }
+}
